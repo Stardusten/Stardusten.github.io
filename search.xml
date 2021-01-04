@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>iTerm2</title>
+    <url>/2021/01/02/iTerm2/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div style="letter-spacing:1px;padding: 0px 50px 0px 0px">凉风起天末，君子意如何</div>
+<div style="text-align: right;padding: 0px 200px 0px 0px">——《天末怀李白》 杜甫</div>
+</blockquote>
+
+<p>推荐使用 iTerm 替换系统默终端，效果如下：</p>
+<center>
+<img data-src='https://cdn.jsdelivr.net/gh/Stardusten/Pic@master/uPic/WKRy6U.png' alt='WKRy6U' width=550px/>
+</center>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 Homebrew 安装 iTerm2 和 zsh：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install iTerm2 zsh zsh-completions</span><br></pre></td></tr></table></figure>
+<p>使用 <code>curl</code> 安装 oh-my-zsh：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</span></span><br></pre></td></tr></table></figure>
+<p>安装时会提示是否将 iTerm2 为默认终端，选 “yes” 即可。可通过菜单栏 <code>iTerm2 - Make iTerm2 Defaut Term</code> 修改默认终端（按下 command 可以将默认终端改回系统终端）</p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>插件的安装参见具体帮助文档，此处不再赘述。装好后记得要在 <code>~/.zshrc</code> 中激活要用的插件。</p>
+<p>下面推荐四款插件：</p>
+<h3 id="git：支持-git-缩写"><a href="#git：支持-git-缩写" class="headerlink" title="git：支持 git 缩写"></a>git：支持 git 缩写</h3><p>提供对各种 git 命令缩写的支持，比如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add --all ===&gt; gaa</span><br><span class="line">git commit -m ===&gt; gcmsg</span><br></pre></td></tr></table></figure>
+<p>使用 <code>cat</code> 可查看支持的全部缩写：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh</span><br></pre></td></tr></table></figure>
+<p>注：git 默认安装且激活</p>
+<h3 id="z：快速的切换文件路径"><a href="#z：快速的切换文件路径" class="headerlink" title="z：快速的切换文件路径"></a>z：快速的切换文件路径</h3><ol>
+<li><code>z foo</code> ：进入到最匹配的 foo 关键字的目录</li>
+<li><code>z foo bar</code> ：进入层级匹配，先匹配 foo 关键字，再匹配 bar 关键字的目录</li>
+<li><code>z -r foo</code> ：进入匹配 foo 关键字目录列表中 rank 值最高的目录</li>
+<li><code>z -t foo</code> ：进入匹配 foo 关键字目录列表中最近访问的目录</li>
+<li><code>z -l foo</code> ：列出所有匹配 foo 关键字的目录列表</li>
+</ol>
+<p>注：z 默认安装，但没有激活，需要自己到 <code>.zshrc</code> 中激活</p>
+<h3 id="zsh-syntax-highlighting：语法高亮"><a href="#zsh-syntax-highlighting：语法高亮" class="headerlink" title="zsh-syntax-highlighting：语法高亮"></a>zsh-syntax-highlighting：语法高亮</h3><p><a href="https://github.com/zsh-users/zsh-syntax-highlighting">GitHub 项目地址</a></p>
+<p>语法高亮的插件</p>
+<h3 id="zsh-autosuggestions：自动补全"><a href="#zsh-autosuggestions：自动补全" class="headerlink" title="zsh-autosuggestions：自动补全"></a>zsh-autosuggestions：自动补全</h3><p><a href="https://github.com/zsh-users/zsh-autosuggestions">GitHub 项目地址</a></p>
+<p>默认按右箭头 → 补全，可以在 <code>.zshrc</code> 中添加以下内容，修改默认的键位：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">bindkey <span class="string">&#x27;,&#x27;</span> autosuggest-accept <span class="comment">#  设置逗号补全</span></span><br></pre></td></tr></table></figure>
+<h2 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h2><h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>表示默认主题很好看，不打算换，但可以自行更换新主题。很多人喜欢的 <code>agnoster</code> 还需要安装配置 Powerline 字体</p>
+<h3 id="设置背景图片"><a href="#设置背景图片" class="headerlink" title="设置背景图片"></a>设置背景图片</h3><p>在 <code>Preferences-Profile-Window</code> 项设置即可，注意 Mode 选择 <strong>Scale to fold</strong>，否则拉伸很难看。</p>
+<h2 id="设置为-vscode-内部终端"><a href="#设置为-vscode-内部终端" class="headerlink" title="设置为 vscode 内部终端"></a>设置为 vscode 内部终端</h2><p>设置 json 中添加如下内容即可。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;terminal.external.osxExec&quot;: &quot;iTerm.app&quot;,</span><br><span class="line">&quot;terminal.integrated.shell.osx&quot;: &quot;/bin/zsh&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Mac 折腾手记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 开发环境配置</title>
+    <url>/2021/01/02/python_env/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div style="letter-spacing:1px;padding: 0px 50px 0px 0px">求知若渴，虚心若愚。</div>
+<div style="text-align: right;padding: 0px 200px 0px 0px">—— 史蒂夫·乔布斯</div>
+</blockquote>
+
+<h2 id="Pyenv：Python-环境管理神器"><a href="#Pyenv：Python-环境管理神器" class="headerlink" title="Pyenv：Python 环境管理神器"></a>Pyenv：Python 环境管理神器</h2><p>建议使用 pyenv 安装和管理多个 Python 版本</p>
+<h3 id="安装-Pyenv"><a href="#安装-Pyenv" class="headerlink" title="安装 Pyenv"></a>安装 Pyenv</h3><p>使用 Homebrew 安装 pyenv：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install pyenv</span><br></pre></td></tr></table></figure>
+<h3 id="安装-Python-相关"><a href="#安装-Python-相关" class="headerlink" title="安装 Python 相关"></a>安装 Python 相关</h3><p>使用 <code>-l</code> 查看所有可以安装的解释器、包组件等。没有特殊要求，新手安装 Anaconda 即可。如果嫌 Anaconda 太大，也可选择 miniconda。</p>
+<p>默认的安装路径是 <code>~/.pyenv/shims/python</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv install -l</span><br></pre></td></tr></table></figure>
+<h2 id="将-python-映射为-python3"><a href="#将-python-映射为-python3" class="headerlink" title="将 python 映射为 python3"></a>将 python 映射为 python3</h2><p>macOS 自带的 Python 版本为 2.7，默认的 <code>python</code> 命令调用的也是这个低版本的 Python，如果用自己安装的 Python 则需要使用 <code>python3</code>。但这很麻烦，比如 vscode 的 coderunner 插件就会默认调用系统自带的 Python，这会导致许多问题。可以将默认 Python 改为我们自己安装的，但通常不建议，因为很可能造成未知的问题。</p>
+<p>更好的方法是，在 <code>.bash_profile</code> 中用 <code>alias</code>，将 <code>python</code> 关键字映射为 <code>python3</code> ，即：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> python=<span class="string">&quot;python3&quot;</span></span><br></pre></td></tr></table></figure>
+<p>同样的操作可以将 <code>pip</code> 映射为 <code>pip3</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> pip=<span class="string">&quot;pip3&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Vscode-配置-Python-开发环境"><a href="#Vscode-配置-Python-开发环境" class="headerlink" title="Vscode 配置 Python 开发环境"></a>Vscode 配置 Python 开发环境</h2><p>安装 Python Extension Pack ，并按提示安装 Pylance 即可。</p>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>什么都不用配置，直接点 <code>Run and Debug</code> 并选择调试模式即可</p>
+<p>注意：在新窗口、新文件夹中调试，不然会默认把你工作区的所有文件一起运行</p>
+<h3 id="Jupyter"><a href="#Jupyter" class="headerlink" title="Jupyter"></a>Jupyter</h3><p>Pylance 支持 Jupyter，<code>shift + command + P</code> 输入 <code>Jupyter</code> 即可查看支持的命令。</p>
+]]></content>
+      <tags>
+        <tag>Mac 折腾手记</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 面向对象编程</title>
+    <url>/2021/01/02/python_object_oriented/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+
+<div style="letter-spacing:1px;padding: 0px 50px 0px 0px">思念着你的人所在之处，便是你的归宿</div>
+<div style="text-align: right;padding: 0px 200px 0px 0px">——《火影忍者》 幽鬼丸</div>
+
+</blockquote>
+
+<h2 id="访问权限控制"><a href="#访问权限控制" class="headerlink" title="访问权限控制"></a>访问权限控制</h2><p>Python 中通过命名限定访问权限，以两个下划线开头的成员为私有成员。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__private=<span class="string">&#x27;__private&#x27;</span></span><br><span class="line"></span><br><span class="line">Test=test()</span><br><span class="line">print(Test.__private)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">AttributeError: <span class="string">&#x27;test&#x27;</span> object has no attribute <span class="string">&#x27;__private&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>但事实上，Python 只不过是把所有私有成员重新命名了一下，在原来的名字前面加上了 <code>_类名</code> 。我们知道了命名规则，一样可以在类外访问私有成员:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__private=<span class="string">&#x27;__private&#x27;</span></span><br><span class="line"></span><br><span class="line">Test=test()</span><br><span class="line">print(Test._test__private) <span class="comment"># 新的命名</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">__private</span><br></pre></td></tr></table></figure>
+<p>也就是说，Python 并没有从语法上严格保证私有成员的私密性，它只是给私有成员换了个名字来妨碍对它们的访问。之所以这样设定，可以用这样一句名言加以解释，就是：</p>
+<center>
+
+<p><strong>“ We are all consenting adults here. ”</strong></p>
+</center>
+
+<p>因为绝大多数程序员都认为开放比封闭要好，这提供了更高的自由度。况且程序员应该自己为自己的行为负责。在实际开发中，我们通常 <strong>不将任何成员设置为私有的</strong>，因为这会导致子类无法访问。对于不希望在类外被访问的成员，一种惯例是 <strong>命名时以单下划线开头</strong>，提示该属性是受保护的，在类外访问时应慎重（还是能访问）</p>
+<p>虽然不建议将属性设置为私有的，但如果直接将属性暴露给外界也是不合适的。比如，我们没有办法进行 <strong>合法性检查</strong>。这时，一般的处理方法是：遵循上面 <strong>以单下划线开头</strong> 的命名惯例，并为属性 <strong>包装 getter 和 setter 方法</strong>，这样就能使对属性的访问既安全又方便。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self._name=<span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 访问器 - getter 方法</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 修改器 - setter 方法</span></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span>(<span class="params">self,new_name</span>):</span></span><br><span class="line">        <span class="comment"># 可在此加入合法性检测语句</span></span><br><span class="line">        self._name=new_name</span><br><span class="line"></span><br><span class="line">person=Person()</span><br><span class="line">person.name=<span class="string">&#x27;Harry&#x27;</span></span><br><span class="line">print(person.name)</span><br></pre></td></tr></table></figure>
+<h2 id="实例方法-amp-类方法-amp-静态方法"><a href="#实例方法-amp-类方法-amp-静态方法" class="headerlink" title="实例方法 &amp; 类方法 &amp; 静态方法"></a>实例方法 &amp; 类方法 &amp; 静态方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">methods</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span> <span class="comment"># 实例方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_method</span>(<span class="params">cls,l</span>):</span> <span class="comment"># 类方法</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_method</span>(<span class="params">l</span>):</span> <span class="comment"># 静态方法</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">print(methods.__str__)</span><br><span class="line">print(methods.class_method)</span><br><span class="line">print(methods.static_method)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;function methods.__str__ at 0x10ec0c3a0&gt;</span><br><span class="line">&lt;bound method methods.class_method of &lt;class &#39;__main__.methods&#39;&gt;&gt;</span><br><span class="line">&lt;function methods.static_method at 0x10ec0c4c0&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="工厂函数"><a href="#工厂函数" class="headerlink" title="工厂函数"></a>工厂函数</h3><p>我们知道 Python 中类只能有一个构造函数 <code>__init__</code>，如果我们需要 “重载构造函数”，就需要自己写 <strong>工厂函数</strong>。</p>
+<p>所谓工厂函数，不过是把构造函数包装一下：将传入的参数转化为构造函数可接受的形式，再调用构造函数。工厂函数既可以用类方法，也可以用静态方法实现，但一般选择类方法，因为类方法中传入了类参数 <code>cls</code> ，使用 <code>cls()</code> 即可方便灵活地调用构造函数创建实例，而静态函数必须自己指定类名（硬编码）。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">methods</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,arg_1,arg_2</span>):</span></span><br><span class="line">        self.arg_1=arg_1</span><br><span class="line">        self.arg_2=arg_2</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_method</span>(<span class="params">cls,l</span>):</span></span><br><span class="line">        <span class="keyword">return</span> cls(l[<span class="number">0</span>],l[<span class="number">1</span>]) <span class="comment"># 如果类名改变，这里不需要改变</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_method</span>(<span class="params">l</span>):</span></span><br><span class="line">        <span class="keyword">return</span> methods(l[<span class="number">0</span>],l[<span class="number">1</span>]) <span class="comment"># 如果类名改变，这里也要跟着改</span></span><br></pre></td></tr></table></figure>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p>静态方法常用于 <strong>合法性检测</strong></p>
+<h2 id="魔法函数"><a href="#魔法函数" class="headerlink" title="魔法函数"></a>魔法函数</h2><p>魔法函数（Magic Methods）是 <strong>Python 内置</strong> 的 <strong>以双下划线开头结尾的</strong> ，用来 <strong>增强自己写的类，使其具有新的特性</strong> 的一类特殊函数</p>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
+<li><code>__iter__</code>：可迭代（Iterable）声明</li>
+<li> <code>__next__</code>：返回 <strong>下一个值</strong>，直到抛出 <code>StopIteration</code> 异常</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fib</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,num</span>):</span></span><br><span class="line">        <span class="comment"># 迭代初值</span></span><br><span class="line">        self.prev=<span class="number">0</span></span><br><span class="line">        self.curr=<span class="number">1</span></span><br><span class="line">        <span class="comment"># 计数器</span></span><br><span class="line">        self.num=num</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 声明 Fib 为可迭代对象</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 实现迭代</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.num&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="comment"># 暂存 self.curr 以返回当前值而非下一个值</span></span><br><span class="line">            ans=self.curr</span><br><span class="line">            self.prev, self.curr=self.curr, self.prev+self.curr</span><br><span class="line">            self.num-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> Fib(<span class="number">5</span>):</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
+<h3 id="可调用"><a href="#可调用" class="headerlink" title="可调用"></a>可调用</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">call</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self,x,y</span>):</span></span><br><span class="line">        <span class="keyword">if</span> x&gt;y:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line">a=call()</span><br><span class="line">print(a(<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h3 id="上下文管理"><a href="#上下文管理" class="headerlink" title="上下文管理"></a>上下文管理</h3><h2 id="继承与多态"><a href="#继承与多态" class="headerlink" title="继承与多态"></a>继承与多态</h2><h3 id="抽象基类"><a href="#抽象基类" class="headerlink" title="抽象基类"></a>抽象基类</h3>]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+</search>
