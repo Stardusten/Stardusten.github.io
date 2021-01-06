@@ -23,15 +23,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}};
   </script>
-<meta name="description" content="思念着你的人所在之处，便是你的归宿 ——《火影忍者》 幽鬼丸    访问权限控制Python 中通过命名限定访问权限，以两个下划线开头的成员为私有成员。 123456class test(object):    def __init__(self):        self.__private&#x3D;&amp;#x27;__private&amp;#x27;Test&#x3D;test()print(Test.__priva">
+<meta name="description" content="思念着你的人所在之处，便是你的归宿 ——《火影忍者》 幽鬼丸    type &amp; value &amp; idPython 中对象有三要素：type（类型）、value（值）、id（身份），可以将 id（身份）理解为对象在内存中的地址，每个对象都有唯一的 id。 在有些书中，会说还有一个 “要素” 是 alias（别名），别名和变量名一样，也是对象的引用。 访问权限控制Python 中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 面向对象编程">
 <meta property="og:url" content="http://example.com/2021/01/02/python_object_oriented/index.html">
 <meta property="og:site_name" content="Stardust&#39;s Cabin">
-<meta property="og:description" content="思念着你的人所在之处，便是你的归宿 ——《火影忍者》 幽鬼丸    访问权限控制Python 中通过命名限定访问权限，以两个下划线开头的成员为私有成员。 123456class test(object):    def __init__(self):        self.__private&#x3D;&amp;#x27;__private&amp;#x27;Test&#x3D;test()print(Test.__priva">
+<meta property="og:description" content="思念着你的人所在之处，便是你的归宿 ——《火影忍者》 幽鬼丸    type &amp; value &amp; idPython 中对象有三要素：type（类型）、value（值）、id（身份），可以将 id（身份）理解为对象在内存中的地址，每个对象都有唯一的 id。 在有些书中，会说还有一个 “要素” 是 alias（别名），别名和变量名一样，也是对象的引用。 访问权限控制Python 中">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-01-02T15:37:25.000Z">
-<meta property="article:modified_time" content="2021-01-04T22:47:37.795Z">
+<meta property="article:modified_time" content="2021-01-05T14:19:01.112Z">
 <meta property="article:author" content="Stardust Crusader">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -67,6 +67,15 @@
 <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script>
 <title>Python 面向对象编程 | Stardust's Cabin</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-84HT6HN7R4"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-84HT6HN7R4');
+      }
+    </script>
 
 
 
@@ -200,7 +209,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">访问权限控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95-amp-%E7%B1%BB%E6%96%B9%E6%B3%95-amp-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">实例方法 &amp; 类方法 &amp; 静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">工厂函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">静态方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AD%94%E6%B3%95%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">魔法函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3"><span class="nav-number">3.1.</span> <span class="nav-text">迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%B0%83%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">可调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86"><span class="nav-number">3.3.</span> <span class="nav-text">上下文管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81"><span class="nav-number">4.</span> <span class="nav-text">继承与多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB"><span class="nav-number">4.1.</span> <span class="nav-text">抽象基类</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#type-amp-value-amp-id"><span class="nav-number">1.</span> <span class="nav-text">type &amp; value &amp; id</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">访问权限控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95-amp-%E7%B1%BB%E6%96%B9%E6%B3%95-amp-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">实例方法 &amp; 类方法 &amp; 静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">工厂函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">静态方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AD%94%E6%B3%95%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">魔法函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.1.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3"><span class="nav-number">4.2.</span> <span class="nav-text">迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%B0%83%E7%94%A8"><span class="nav-number">4.3.</span> <span class="nav-text">可调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86"><span class="nav-number">4.4.</span> <span class="nav-text">上下文管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81"><span class="nav-number">5.</span> <span class="nav-text">继承与多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB"><span class="nav-number">5.1.</span> <span class="nav-text">抽象基类</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -215,14 +224,14 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -300,7 +309,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-05 06:47:37" itemprop="dateModified" datetime="2021-01-05T06:47:37+08:00">2021-01-05</time>
+        <time title="修改时间：2021-01-05 22:19:01" itemprop="dateModified" datetime="2021-01-05T22:19:01+08:00">2021-01-05</time>
       </span>
 
   
@@ -318,14 +327,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.7k</span>
+      <span>3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -343,6 +352,8 @@
 
 </blockquote>
 
+<h2 id="type-amp-value-amp-id"><a href="#type-amp-value-amp-id" class="headerlink" title="type &amp; value &amp; id"></a>type &amp; value &amp; id</h2><p>Python 中对象有三要素：<strong>type（类型）</strong>、<strong>value（值）</strong>、<strong>id（身份）</strong>，可以将 id（身份）理解为对象在内存中的地址，每个对象都有唯一的 id。</p>
+<p>在有些书中，会说还有一个 “要素” 是 <strong>alias（别名）</strong>，别名和变量名一样，也是对象的引用。</p>
 <h2 id="访问权限控制"><a href="#访问权限控制" class="headerlink" title="访问权限控制"></a>访问权限控制</h2><p>Python 中通过命名限定访问权限，以两个下划线开头的成员为私有成员。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__private=<span class="string">&#x27;__private&#x27;</span></span><br><span class="line"></span><br><span class="line">Test=test()</span><br><span class="line">print(Test.__private)</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AttributeError: <span class="string">&#x27;test&#x27;</span> object has no attribute <span class="string">&#x27;__private&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -365,10 +376,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">methods</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,arg_1,arg_2</span>):</span></span><br><span class="line">        self.arg_1=arg_1</span><br><span class="line">        self.arg_2=arg_2</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_method</span>(<span class="params">cls,l</span>):</span></span><br><span class="line">        <span class="keyword">return</span> cls(l[<span class="number">0</span>],l[<span class="number">1</span>]) <span class="comment"># 如果类名改变，这里不需要改变</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_method</span>(<span class="params">l</span>):</span></span><br><span class="line">        <span class="keyword">return</span> methods(l[<span class="number">0</span>],l[<span class="number">1</span>]) <span class="comment"># 如果类名改变，这里也要跟着改</span></span><br></pre></td></tr></table></figure>
 <h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p>静态方法常用于 <strong>合法性检测</strong></p>
 <h2 id="魔法函数"><a href="#魔法函数" class="headerlink" title="魔法函数"></a>魔法函数</h2><p>魔法函数（Magic Methods）是 <strong>Python 内置</strong> 的 <strong>以双下划线开头结尾的</strong> ，用来 <strong>增强自己写的类，使其具有新的特性</strong> 的一类特殊函数</p>
-<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ul>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><code>__str__</code>：指定类实例用 <code>print()</code> 输出时的格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">date</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,year,month,day</span>):</span></span><br><span class="line">        self.year=year</span><br><span class="line">        self.month.month</span><br><span class="line">        self.day=day</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;<span class="subst">&#123;self.year&#125;</span>/<span class="subst">&#123;self.month&#125;</span>/<span class="subst">&#123;self.day&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><ol>
 <li><code>__iter__</code>：可迭代（Iterable）声明</li>
-<li> <code>__next__</code>：返回 <strong>下一个值</strong>，直到抛出 <code>StopIteration</code> 异常</li>
-</ul>
+<li><code>__next__</code>：返回 <strong>下一个值</strong>，直到抛出 <code>StopIteration</code> 异常</li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fib</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,num</span>):</span></span><br><span class="line">        <span class="comment"># 迭代初值</span></span><br><span class="line">        self.prev=<span class="number">0</span></span><br><span class="line">        self.curr=<span class="number">1</span></span><br><span class="line">        <span class="comment"># 计数器</span></span><br><span class="line">        self.num=num</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 声明 Fib 为可迭代对象</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 实现迭代</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.num&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="comment"># 暂存 self.curr 以返回当前值而非下一个值</span></span><br><span class="line">            ans=self.curr</span><br><span class="line">            self.prev, self.curr=self.curr, self.prev+self.curr</span><br><span class="line">            self.num-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> Fib(<span class="number">5</span>):</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
 <h3 id="可调用"><a href="#可调用" class="headerlink" title="可调用"></a>可调用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">call</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self,x,y</span>):</span></span><br><span class="line">        <span class="keyword">if</span> x&gt;y:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line">a=call()</span><br><span class="line">print(a(<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
@@ -448,14 +461,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">5k</span>
+    <span title="站点总字数">112k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4 分钟</span>
+    <span title="站点阅读时长">1:42</span>
   </span>
 </div>
 <div class="busuanzi-count">
