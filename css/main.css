@@ -2727,7 +2727,7 @@ mjx-container[display="true"] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ff12ff;
+  background: #6cff38;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2753,7 +2753,7 @@ mjx-container[display="true"] + br {
 code {
   font-family: "Fira Code";
   color: #c71585;
-  background: #fffafa;
+  background: transparent;
   padding: 0px 4px 0px 4px;
 }
 .highlight,
@@ -2775,7 +2775,7 @@ figure.highlight .gutter pre {
   background-color: #eee;
 }
 .blockquote-center {
-  font-family: STKaiti;
+  font-family: "LatinModernMath-Regular", "FZFSK--GBK1-0", "STFangsong";
 }
 .post-body p a {
   color: #0593d3;
@@ -2793,7 +2793,7 @@ figure.highlight .gutter pre {
 code {
   font-family: "Fira Code";
   color: #c71585;
-  background: #fffafa;
+  background: transparent;
   padding: 0px 4px 0px 4px;
 }
 .highlight,
@@ -2815,7 +2815,7 @@ figure.highlight .gutter pre {
   background-color: #eee;
 }
 .blockquote-center {
-  font-family: STKaiti;
+  font-family: "LatinModernMath-Regular", "FZFSK--GBK1-0", "STFangsong";
 }
 .post-body p a {
   color: #0593d3;

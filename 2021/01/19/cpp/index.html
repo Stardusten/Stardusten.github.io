@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
@@ -23,15 +23,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}};
   </script>
-<meta name="description" content="当想要保护自己重要的人的时候，人就会变得很坚强。 ——《火影忍者》白   类内静态成员的初始化虽然 C++ 新标准已经支持 in-class initializer，但如果等号右边不是常量表达式（比如要调用函数计算），还是需要使用传统 类内定义，类外初始化 的技术 12345class calc&amp;#123;private:    static const double t; &#x2F;&#x2F; 类内定义&amp;#1">
+<meta name="description" content="当想要保护自己重要的人的时候，人就会变得很坚强。 ——《火影忍者》白">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ 学习笔记">
 <meta property="og:url" content="http://example.com/2021/01/19/cpp/index.html">
 <meta property="og:site_name" content="Stardust&#39;s Cabin">
-<meta property="og:description" content="当想要保护自己重要的人的时候，人就会变得很坚强。 ——《火影忍者》白   类内静态成员的初始化虽然 C++ 新标准已经支持 in-class initializer，但如果等号右边不是常量表达式（比如要调用函数计算），还是需要使用传统 类内定义，类外初始化 的技术 12345class calc&amp;#123;private:    static const double t; &#x2F;&#x2F; 类内定义&amp;#1">
+<meta property="og:description" content="当想要保护自己重要的人的时候，人就会变得很坚强。 ——《火影忍者》白">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-01-19T12:44:14.442Z">
-<meta property="article:modified_time" content="2021-01-20T10:57:42.200Z">
+<meta property="article:published_time" content="2021-01-19T12:22:25.000Z">
+<meta property="article:modified_time" content="2021-01-23T10:07:56.976Z">
 <meta property="article:author" content="Stardust Crusader">
 <meta name="twitter:card" content="summary">
 
@@ -62,8 +62,6 @@
         border-left-color: #1E92FB;    /*左边框颜色*/
     }
 </style>
-
-<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script>
 <title>C++ 学习笔记 | Stardust's Cabin</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-84HT6HN7R4"></script>
@@ -210,14 +208,14 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%86%85%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">类内静态成员的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode-%E5%85%B3%E9%97%AD-C-11-Warning"><span class="nav-number">2.1.</span> <span class="nav-text">vscode 关闭 C++ 11 Warning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jupyter-%E5%AE%89%E8%A3%85-C-Kernel"><span class="nav-number">2.2.</span> <span class="nav-text">Jupyter 安装 C++ Kernel</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88-amp-%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">常量指针 &amp; 指针常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top-level-const-%E5%92%8C-low-level-const"><span class="nav-number">2.</span> <span class="nav-text">top-level const 和 low-level const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%86%85%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">类内静态成员的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode-%E5%85%B3%E9%97%AD-C-11-Warning"><span class="nav-number">4.1.</span> <span class="nav-text">vscode 关闭 C++ 11 Warning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jupyter-%E5%AE%89%E8%A3%85-C-Kernel"><span class="nav-number">4.2.</span> <span class="nav-text">Jupyter 安装 C++ Kernel</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Stardust Crusader"
-      src="https://cdn.jsdelivr.net/gh/Stardusten/Pic@master/uPic/38722307.jpeg">
+      src="https://avatars3.githubusercontent.com/u/38722307?s=460&u=61943639ee48d40e81a939000eae78e46df1ea3f&v=4">
   <p class="site-author-name" itemprop="name">Stardust Crusader</p>
   <div class="site-description" itemprop="description">Technique & Life</div>
 </div>
@@ -277,7 +275,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/cpp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Stardusten/Pic@master/uPic/38722307.jpeg">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/38722307?s=460&u=61943639ee48d40e81a939000eae78e46df1ea3f&v=4">
       <meta itemprop="name" content="Stardust Crusader">
       <meta itemprop="description" content="Technique & Life">
     </span>
@@ -294,13 +292,6 @@
           <div class="post-meta">
 
   
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
 </div>
 
         </div>
@@ -315,6 +306,17 @@
 <div style="text-align: right;padding: 0px 200px 0px 0px">——《火影忍者》白</div>
 </blockquote>
 
+<a id="more"></a>
+
+<h2 id="常量指针-amp-指针常量"><a href="#常量指针-amp-指针常量" class="headerlink" title="常量指针 &amp; 指针常量"></a>常量指针 &amp; 指针常量</h2><p>实际上就是一个剥洋葱的过程，从内到外逐步剥开：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p; <span class="comment">// p -&gt; p 是指针 -&gt; p 指向 int -&gt; 这个 int 不可变 =&gt; 常量指针</span></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p; <span class="comment">// p -&gt; p 不可变 -&gt; p 是指针 -&gt; p 指向 int =&gt; 指针常量</span></span><br></pre></td></tr></table></figure>
+<h2 id="top-level-const-和-low-level-const"><a href="#top-level-const-和-low-level-const" class="headerlink" title="top-level const 和 low-level const"></a>top-level const 和 low-level const</h2><p><em>C++ Primer</em> 中对 top-level const 和 low-level const 解释得非常模糊，翻译上也很容易造成误导。top-level const 翻译成 “顶层 const” 没问题，但 low-level const 就不该翻译成 “底层 const” 了，这让 bottom-level const 情何以堪？</p>
+<p>看了一圈，还是 Stack Overflow 上的一个回答直击本质：</p>
+<blockquote>
+<p>使得被修饰的变量本身无法改变的 const 是 top-level const，其他的通过指针或引用等间接途径来限制目标内容不可变的 const 是 low-level const。</p>
+</blockquote>
+<p>现在再看书上的注释就好懂了吧：</p>
+<figure class="highlight cpp"><figcaption><span>C++ Primer Edition 5th P62</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>, &amp;r = i;</span><br><span class="line"><span class="keyword">auto</span> a = r;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ci = i, &amp;cr = ci;</span><br><span class="line"><span class="keyword">auto</span> b = ci;</span><br><span class="line"><span class="keyword">auto</span> c = cr;</span><br><span class="line"><span class="keyword">auto</span> d = &amp;i;</span><br><span class="line"><span class="keyword">auto</span> e = &amp;ci;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> f =ci;</span><br><span class="line"><span class="keyword">auto</span> &amp;g = ci;</span><br><span class="line"><span class="keyword">auto</span> &amp;h = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> &amp;j =<span class="number">42</span>;</span><br><span class="line"><span class="keyword">auto</span> &amp;m = ci;</span><br><span class="line"><span class="keyword">auto</span> *p = &amp;ci;</span><br><span class="line"><span class="keyword">auto</span> &amp;n = i, *p2 = &amp;ci; <span class="comment">// Wrong!</span></span><br></pre></td></tr></table></figure>
 <h2 id="类内静态成员的初始化"><a href="#类内静态成员的初始化" class="headerlink" title="类内静态成员的初始化"></a>类内静态成员的初始化</h2><p>虽然 C++ 新标准已经支持 in-class initializer，但如果等号右边不是常量表达式（比如要调用函数计算），还是需要使用传统 <strong>类内定义，类外初始化</strong> 的技术</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">calc</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> t; <span class="comment">// 类内定义</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> calc::t = <span class="built_in">atan</span>(<span class="number">2</span>); <span class="comment">// 类外初始化，注意不要加 static</span></span><br></pre></td></tr></table></figure>
 <p>简单的常量表达式，使用 <code>enum</code> 定义会更优雅：</p>
@@ -343,13 +345,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/01/19/haskell/" rel="prev" title="Haskell 学习笔记">
-                  <i class="fa fa-chevron-left"></i> Haskell 学习笔记
+                <a href="/2021/01/18/md/" rel="prev" title="Markdown 学习笔记">
+                  <i class="fa fa-chevron-left"></i> Markdown 学习笔记
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/01/19/python/" rel="next" title="Python 学习笔记">
-                  Python 学习笔记 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/01/19/haskell/" rel="next" title="Haskell 学习笔记">
+                  Haskell 学习笔记 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -399,24 +401,6 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Stardust Crusader</span>
-</div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
@@ -492,7 +476,6 @@ document.addEventListener('pjax:success', () => {
 
 
   
-  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 

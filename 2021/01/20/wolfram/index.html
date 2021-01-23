@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}};
+  </script>
+<meta name="description" content="大学四年，不应去追求成功，而应该追求自身的成长，找到自己可以持续投入的东西。 ——《CS 自救指北》CXS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wolfram Language 学习笔记">
+<meta property="og:url" content="http://example.com/2021/01/20/wolfram/index.html">
+<meta property="og:site_name" content="Stardust&#39;s Cabin">
+<meta property="og:description" content="大学四年，不应去追求成功，而应该追求自身的成长，找到自己可以持续投入的东西。 ——《CS 自救指北》CXS">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Stardusten/Pic@master/uPic/p1.svg">
+<meta property="article:published_time" content="2021-01-20T12:22:25.000Z">
+<meta property="article:modified_time" content="2021-01-23T10:07:47.359Z">
+<meta property="article:author" content="Stardust Crusader">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Stardusten/Pic@master/uPic/p1.svg">
+
+
+<link rel="canonical" href="http://example.com/2021/01/20/wolfram/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<title>Wolfram Language 学习笔记 | Stardust's Cabin</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-84HT6HN7R4"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-84HT6HN7R4');
+      }
+    </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Stardust's Cabin</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">博观而约取，厚积而薄发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-contents"><a href="/contents/" rel="section"><i class="fa fa-th fa-fw"></i>Contents</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          About
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">调用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E8%B0%83%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">前缀调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E7%BC%80%E8%B0%83%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">中缀调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BC%80%E8%B0%83%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">后缀调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">1.4.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apply"><span class="nav-number">1.5.</span> <span class="nav-text">Apply</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="nav-number">3.</span> <span class="nav-text">模式匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%AF%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">纯函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%AF%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92"><span class="nav-number">4.1.</span> <span class="nav-text">纯函数递归</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E5%90%88"><span class="nav-number">5.</span> <span class="nav-text">函数组合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8C%96%E5%8F%98%E9%87%8F"><span class="nav-number">6.</span> <span class="nav-text">局部化变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%94%E6%8E%89%E5%BE%AA%E7%8E%AF"><span class="nav-number">7.</span> <span class="nav-text">扔掉循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E5%9B%BE"><span class="nav-number">8.</span> <span class="nav-text">画图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Work-with-LaTeX"><span class="nav-number">8.1.</span> <span class="nav-text">Work with $\LaTeX$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XeLaTex-%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81"><span class="nav-number">8.1.1.</span> <span class="nav-text">XeLaTex 中文支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD"><span class="nav-number">8.1.2.</span> <span class="nav-text">自动加载</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Stardust Crusader"
+      src="https://avatars3.githubusercontent.com/u/38722307?s=460&u=61943639ee48d40e81a939000eae78e46df1ea3f&v=4">
+  <p class="site-author-name" itemprop="name">Stardust Crusader</p>
+  <div class="site-description" itemprop="description">Technique & Life</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Stardusten" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Stardusten" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/xiangbaobao2003@gmail.com" title="E-Mail → xiangbaobao2003@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/wolfram/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/38722307?s=460&u=61943639ee48d40e81a939000eae78e46df1ea3f&v=4">
+      <meta itemprop="name" content="Stardust Crusader">
+      <meta itemprop="description" content="Technique & Life">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stardust's Cabin">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Wolfram Language 学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<div style="letter-spacing:1px;padding: 0px 50px 0px 0px">大学四年，不应去追求成功，而应该追求自身的成长，找到自己可以持续投入的东西。</div>
+<div style="text-align: right;padding: 0px 200px 0px 0px">——《CS 自救指北》CXS</div>
+</blockquote>
+
+<a id="more"></a>
+
+<p>Wolfram Language 是一种自由的语言，你可以用你喜欢的任何方式去学习它、使用它。我本希望通过它学习函数式编程 Functional Programming，无奈相关资源太少，最后还是决定从 Haskell 入门，研读《Haskell 趣学指南》，同时尝试用 Wolfram Language 实现书中的 Haskell 代码。</p>
+<p>事实证明，这的确有一定挑战性：已经小成的 C/C++、刚入门的 Python，不学自会的 Java、正在学的 Haskell、Wolfram Language 快把爷整精分了。不过多语言同时学还是有点好处的，可以比较同一功能不同语言的实现，从而更深入地理解这一功能；“精分” 的过程同样也帮助了对不同语言语法的记忆。</p>
+<p>在这里点名表扬 Wolfram Language 官方的文档，至少和 Python 是一个级别的了，非常详细。可惜入坑指南和 Python 比还有一定差距。所以本文也希望成为通过 Wolfram Language 学 FP 一篇不错的入坑指南。因为官方文档做的非常好，所以 <strong>凡是能通过看文档学的内容一律给文档链接</strong>，不再赘述。</p>
+<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>Wolfram Language 不仅支持普通的前缀调用，还支持以中缀、后缀的方式调用函数。合理使用这三种调用方式，能使代码逻辑清晰，增强可读性。</p>
+<h3 id="前缀调用"><a href="#前缀调用" class="headerlink" title="前缀调用"></a>前缀调用</h3><p><em>Reference</em>： <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/Prefix.html?q=Prefix">Prefix</a></p>
+<ol>
+<li><p><strong>@ 与 @@</strong></p>
+<p> 注意区别 <code>@ Prefix</code> 与 <code>@@ Apply</code> ：<code>@</code> 相当于一对中括号，而 <code>@@</code> 会将其右边的函数头用左边的替换。</p>
+ <figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">f</span> <span class="operator">@</span> <span class="variable">g</span><span class="punctuation">[</span><span class="variable">x</span><span class="punctuation">]</span> <span class="operator">&lt;=&gt;</span> <span class="variable">f</span><span class="punctuation">[</span><span class="variable">g</span><span class="punctuation">[</span><span class="variable">x</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line"><span class="variable">f</span> <span class="operator">@@</span> <span class="variable">g</span><span class="punctuation">[</span><span class="variable">x</span><span class="punctuation">]</span> <span class="operator">&lt;=&gt;</span> <span class="variable">f</span><span class="punctuation">[</span><span class="variable">x</span><span class="punctuation">]</span> <span class="comment">(* g 被 f 替换 *)</span></span><br></pre></td></tr></table></figure>
+<p> 所以你知道下面四种写法结果不同的原因了吗？（提示：可以用 <code>FullForm</code> 函数观察表达式的完整形式，注意 <code>&#123;&#125;</code> 只是语法糖，本质上也是函数调用）</p>
+ <figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Plus</span> <span class="punctuation">[</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="punctuation">]</span> <span class="comment">(* Result: 3 *)</span></span><br><span class="line"><span class="built_in">Plus</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">]</span> <span class="comment">(* Result: &#123;1,2&#125; *)</span></span><br><span class="line"><span class="built_in">Plus</span> <span class="operator">@</span> <span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="punctuation">&#125;</span> <span class="comment">(* Result: &#123;1,2&#125; *)</span></span><br><span class="line"><span class="built_in">Plus</span> <span class="operator">@@</span> <span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="punctuation">&#125;</span> <span class="comment">(* Result: 3 *)</span></span><br></pre></td></tr></table></figure>
+<p> <em>Reference</em>： <a target="_blank" rel="noopener" href="https://mathematica.stackexchange.com/questions/56882/postfix-with-two-arguments">Postfix with two arguments</a></p>
+</li>
+<li><p><strong>@ 实现多参数调用</strong></p>
+<p> <code>@</code> 只能用于单参数调用，如果你实在想让 <code>@</code> 支持多参数调用，有下面两种方案，分别对应参数后置、参数前置两种选择：</p>
+ <figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Plus</span> <span class="operator">@</span> <span class="built_in">Sequence</span><span class="punctuation">[</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="operator">,</span><span class="number">3</span><span class="punctuation">]</span> <span class="comment">(* Result: 6 *)</span></span><br><span class="line"><span class="built_in">Plus</span> <span class="punctuation">[</span><span class="type">#</span><span class="operator">,</span><span class="number">2</span><span class="operator">,</span><span class="number">3</span><span class="punctuation">]</span><span class="operator">&amp;</span> <span class="operator">@</span> <span class="number">1</span> <span class="comment">(* Result: 6 *)</span></span><br></pre></td></tr></table></figure>
+<p> 第一种方法使用 <code>Sequence</code> 函数拼接参数序列，详细使用参见<a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/Sequence.html?q=Sequence">Sequence</a></p>
+<p> 第二种方式使用纯函数语法改造原有函数。看上去这两种方法很有些费力不讨好的味道，但的确值得学习，这体现了 Wolfram Language 语法上的灵活性。</p>
+<p> <em>Reference</em>： <a target="_blank" rel="noopener" href="https://mathematica.stackexchange.com/questions/37040/difference-between-and">Stack Exchange: Difference between @ and @@</a></p>
+</li>
+</ol>
+<h3 id="中缀调用"><a href="#中缀调用" class="headerlink" title="中缀调用"></a>中缀调用</h3><p><em>Reference</em>：  <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/Infix.html">Infix</a></p>
+<p>注意：中缀调用 ≠ 嵌套调用</p>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="operator">,</span><span class="number">3</span><span class="punctuation">&#125;</span><span class="operator">~</span><span class="built_in">Join</span><span class="operator">~</span><span class="punctuation">&#123;</span><span class="number">4</span><span class="operator">,</span><span class="number">5</span><span class="operator">,</span><span class="number">6</span><span class="punctuation">&#125;</span><span class="operator">~</span><span class="built_in">Join</span><span class="operator">~</span><span class="punctuation">&#123;</span><span class="number">7</span><span class="operator">,</span><span class="number">8</span><span class="operator">,</span><span class="number">9</span><span class="punctuation">&#125;</span> <span class="operator">&lt;=&gt;</span> <span class="built_in">Join</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="operator">,</span><span class="number">3</span><span class="punctuation">&#125;</span><span class="operator">,</span><span class="punctuation">&#123;</span><span class="number">4</span><span class="operator">,</span><span class="number">5</span><span class="operator">,</span><span class="number">6</span><span class="punctuation">&#125;</span><span class="operator">,</span><span class="punctuation">&#123;</span><span class="number">7</span><span class="operator">,</span><span class="number">8</span><span class="operator">,</span><span class="number">9</span><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br><span class="line"><span class="number">1</span><span class="operator">~</span><span class="built_in">Plus</span><span class="operator">~</span><span class="number">2</span><span class="operator">~</span><span class="built_in">Minus</span><span class="operator">~</span><span class="number">3</span> <span class="operator">!=</span> <span class="built_in">Minus</span><span class="punctuation">[</span><span class="built_in">Plus</span><span class="punctuation">[</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<h3 id="后缀调用"><a href="#后缀调用" class="headerlink" title="后缀调用"></a>后缀调用</h3><p><em>Reference</em>：  <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/Infix.html">Posfix</a></p>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">2</span><span class="operator">,</span><span class="number">3</span><span class="punctuation">&#125;</span><span class="operator">,</span><span class="punctuation">&#123;</span><span class="number">4</span><span class="operator">,</span><span class="number">5</span><span class="operator">,</span><span class="number">6</span><span class="punctuation">&#125;</span><span class="operator">,</span><span class="punctuation">&#123;</span><span class="number">7</span><span class="operator">,</span><span class="number">8</span><span class="operator">,</span><span class="number">9</span><span class="punctuation">&#125;</span><span class="punctuation">&#125;</span> <span class="operator">//</span> <span class="built_in">Flatten</span> <span class="operator">//</span> <span class="built_in">Total</span></span><br></pre></td></tr></table></figure>
+<p>同样可以使用纯函数语法改造原有函数，以实现 <strong>多参数调用</strong>：</p>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="operator">//</span> <span class="built_in">Plus</span><span class="punctuation">[</span><span class="type">#</span><span class="operator">,</span><span class="number">2</span><span class="operator">,</span><span class="number">3</span><span class="punctuation">]</span><span class="operator">&amp;</span> <span class="comment">(* Result: 6 *)</span></span><br></pre></td></tr></table></figure>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><em>Reference</em>：  <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/Map.html">Map</a></p>
+<h3 id="Apply"><a href="#Apply" class="headerlink" title="Apply"></a>Apply</h3><p><em>Reference</em>：  <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/Apply.html?q=Apply">Apply</a></p>
+<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p><em>Reference</em>：  <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/tutorial/FunctionsAndPrograms.html#13037">函数与程序</a></p>
+<p>官方文档非常详细，这里不再赘述。但提醒一点：过程式语法中，函数体是用小括号 <code>()</code> ，而不是中括号、大括号括起来的。可以显式地使用 <code>Return</code> 函数以设置一个或多个出口；也可以省去最后一个表达式末尾的分号，这样会默认返回该表达式的值。但可以看到，后一种方法最多也只能设置一个出口。</p>
+<h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><p><em>Reference</em>：  <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/guide/RulesAndPatterns.html">规则与模式</a></p>
+<ol>
+<li><code>x_</code> ：只匹配 <strong>一个</strong> 表达式</li>
+<li><code>x__</code> ： 匹配 <strong>1 个或多个</strong> 表达式</li>
+<li><code>x___</code> ：匹配 <strong>0 个、1 个或多个</strong> 表达式</li>
+</ol>
+<p>定义函数时使用模式匹配，可以省去一大串难看的 If 树。下面以 <em>递归计算斐波拉契数列</em> 和 <em>快速排序</em> 为例，体会模式匹配的强大：</p>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(*Fibonacci Sequence*)</span></span><br><span class="line"><span class="variable">Fib</span><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">:=</span><span class="number">1</span></span><br><span class="line"><span class="variable">Fib</span><span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span><span class="operator">:=</span><span class="number">1</span></span><br><span class="line"><span class="variable">Fib</span><span class="punctuation">[</span><span class="type">x_</span><span class="punctuation">]</span><span class="operator">:=</span><span class="variable">Fib</span><span class="punctuation">[</span><span class="variable">x</span><span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">+</span><span class="variable">Fib</span><span class="punctuation">[</span><span class="variable">x</span><span class="operator">-</span><span class="number">2</span><span class="punctuation">]</span></span><br><span class="line"><span class="operator">------</span></span><br><span class="line"><span class="variable">Fib</span><span class="punctuation">[</span><span class="number">10</span><span class="punctuation">]</span> <span class="comment">(* Result: 55 *)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(*Quick Sort*)</span></span><br><span class="line"><span class="variable">qsort</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="operator">:=</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="variable">qsort</span><span class="punctuation">[</span><span class="type">l_</span><span class="punctuation">]</span><span class="operator">:=</span><span class="built_in">Join</span><span class="punctuation">[</span></span><br><span class="line">    <span class="variable">qsort</span><span class="punctuation">[</span><span class="built_in">Select</span><span class="punctuation">[</span><span class="built_in">Rest</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="operator">,</span><span class="punctuation">(</span><span class="type">#</span><span class="operator">&lt;=</span><span class="built_in">First</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">&amp;</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="operator">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span><span class="built_in">First</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="operator">,</span></span><br><span class="line">    <span class="variable">qsort</span><span class="punctuation">[</span><span class="built_in">Select</span><span class="punctuation">[</span><span class="built_in">Rest</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="operator">,</span><span class="punctuation">(</span><span class="type">#</span><span class="operator">&gt;</span><span class="built_in">First</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">&amp;</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">]</span></span><br><span class="line"><span class="operator">------</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">1</span><span class="operator">,</span><span class="number">4</span><span class="operator">,</span><span class="number">5</span><span class="operator">,</span><span class="number">1</span><span class="operator">,</span><span class="number">4</span><span class="punctuation">&#125;</span> <span class="operator">//</span> <span class="variable">qsort</span> <span class="comment">(* Result: &#123;1,1,1,4,4,5&#125; *)</span></span><br></pre></td></tr></table></figure>
+<h2 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h2><h3 id="纯函数递归"><a href="#纯函数递归" class="headerlink" title="纯函数递归"></a>纯函数递归</h3><p>Wolfram Language 中，<code>#0</code> 就是纯函数自己，可以用来实现纯函数递归。要在 Python 中实现这一点可不容易。</p>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">If</span><span class="punctuation">[</span><span class="type">#</span><span class="operator">==</span><span class="number">1</span><span class="operator">,</span><span class="number">1</span><span class="operator">,</span><span class="type">#</span><span class="operator">*</span><span class="type">#0</span><span class="punctuation">[</span><span class="type">#</span><span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="operator">&amp;</span><span class="punctuation">[</span><span class="number">3</span><span class="punctuation">]</span> <span class="comment">(*计算 3 的阶乘*)</span></span><br><span class="line"><span class="built_in">If</span><span class="punctuation">[</span><span class="type">#</span><span class="operator">==</span><span class="number">0</span><span class="operator">||</span><span class="type">#</span><span class="operator">==</span><span class="number">1</span><span class="operator">,</span><span class="number">1</span><span class="operator">,</span><span class="type">#0</span><span class="punctuation">[</span><span class="type">#</span><span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">+</span><span class="type">#0</span><span class="punctuation">[</span><span class="type">#</span><span class="operator">-</span><span class="number">2</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="operator">&amp;</span><span class="punctuation">[</span><span class="number">5</span><span class="punctuation">]</span> <span class="comment">(*计算斐波拉契数列第 5 项*)</span></span><br></pre></td></tr></table></figure>
+<h2 id="函数组合"><a href="#函数组合" class="headerlink" title="函数组合"></a>函数组合</h2><p><em>Reference</em>：  <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/Composition.html">Composition</a></p>
+<h2 id="局部化变量"><a href="#局部化变量" class="headerlink" title="局部化变量"></a>局部化变量</h2><p><em>Reference</em>：  <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/Module.html?q=Module">Module</a></p>
+<p>Wolfram Language 中似乎没有一般编程语言中 <strong>作用域</strong> 的概念，所有变量如果不加约束，都是全局的。很多时候这会带来不便，比如下面版本的快速排序就因此无法得到正确的答案：</p>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">qsort</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="operator">:=</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="variable">qsort</span><span class="punctuation">[</span><span class="type">l_</span><span class="punctuation">]</span><span class="operator">:=</span><span class="punctuation">(</span></span><br><span class="line">    <span class="variable">fst</span><span class="operator">=</span><span class="built_in">First</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="operator">;</span></span><br><span class="line">    <span class="variable">rst</span><span class="operator">=</span><span class="built_in">Rest</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="operator">;</span></span><br><span class="line">    <span class="variable">qsort</span><span class="punctuation">[</span><span class="built_in">Select</span><span class="punctuation">[</span><span class="variable">rst</span><span class="operator">,</span><span class="punctuation">(</span><span class="type">#</span><span class="operator">&lt;=</span><span class="variable">fst</span><span class="punctuation">)</span><span class="operator">&amp;</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="operator">~</span><span class="built_in">Join</span><span class="operator">~</span><span class="punctuation">&#123;</span><span class="variable">fst</span><span class="punctuation">&#125;</span><span class="operator">~</span><span class="built_in">Join</span><span class="operator">~</span><span class="variable">qsort</span><span class="punctuation">[</span><span class="built_in">Select</span><span class="punctuation">[</span><span class="variable">rst</span><span class="operator">,</span><span class="punctuation">(</span><span class="type">#</span><span class="operator">&gt;</span><span class="variable">fst</span><span class="punctuation">)</span><span class="operator">&amp;</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"><span class="operator">------</span></span><br><span class="line"><span class="variable">qsort</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">1</span><span class="operator">,</span><span class="number">4</span><span class="operator">,</span><span class="number">5</span><span class="operator">,</span><span class="number">1</span><span class="operator">,</span><span class="number">4</span><span class="punctuation">&#125;</span><span class="punctuation">]</span> <span class="comment">(* Result: &#123;1,1,1&#125; *)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">qsort</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="operator">:=</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="variable">qsort</span><span class="punctuation">[</span><span class="type">l_</span><span class="punctuation">]</span><span class="operator">:=</span><span class="built_in">Module</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="variable">fst</span><span class="operator">=</span><span class="built_in">First</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="operator">,</span><span class="variable">rst</span> <span class="operator">=</span> <span class="built_in">Rest</span><span class="punctuation">[</span><span class="variable">l</span><span class="punctuation">]</span><span class="punctuation">&#125;</span><span class="operator">,</span></span><br><span class="line">    <span class="built_in">Join</span><span class="punctuation">[</span><span class="variable">qsort</span><span class="punctuation">[</span><span class="built_in">Select</span><span class="punctuation">[</span><span class="variable">rst</span><span class="operator">,</span><span class="punctuation">(</span><span class="type">#</span><span class="operator">&lt;=</span><span class="variable">fst</span><span class="punctuation">)</span><span class="operator">&amp;</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="operator">,</span><span class="punctuation">&#123;</span><span class="variable">fst</span><span class="punctuation">&#125;</span><span class="operator">,</span><span class="variable">qsort</span><span class="punctuation">[</span><span class="built_in">Select</span><span class="punctuation">[</span><span class="variable">rst</span><span class="operator">,</span><span class="punctuation">(</span><span class="type">#</span><span class="operator">&gt;</span><span class="variable">fst</span><span class="punctuation">)</span><span class="operator">&amp;</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">]</span></span><br><span class="line"><span class="operator">------</span></span><br><span class="line"><span class="variable">qsort</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="number">1</span><span class="operator">,</span><span class="number">1</span><span class="operator">,</span><span class="number">4</span><span class="operator">,</span><span class="number">5</span><span class="operator">,</span><span class="number">1</span><span class="operator">,</span><span class="number">4</span><span class="punctuation">&#125;</span><span class="punctuation">]</span> <span class="comment">(* Result: &#123;1,1,1,4,4,5&#125; *)</span></span><br></pre></td></tr></table></figure>
+<h2 id="扔掉循环"><a href="#扔掉循环" class="headerlink" title="扔掉循环"></a>扔掉循环</h2><p>如果你学过任何一门面向过程的编程语言，如 C++，那你一定学过循环结构。虽然 Wolfram Language 支持面向过程编程范式，C/C++ 的语法略作修改就能跑起来，但速度往往很不理想。</p>
+<h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><h3 id="Work-with-LaTeX"><a href="#Work-with-LaTeX" class="headerlink" title="Work with $\LaTeX$"></a>Work with $\LaTeX$</h3><p>MaTex 可以让我们协同使用 $\LaTeX$ 和 Wolfram Language 这两大神器，下面给出 Mac OS 的安装方法，其他平台安装方式见 <a target="_blank" rel="noopener" href="https://github.com/szhorvat/MaTeX">GitHub 地址</a>.</p>
+<ol>
+<li>安装 MacTex</li>
+<li>打开 Mathematica ，执行 <code>ResourceFunction[&quot;MaTeXInstall&quot;][]</code> 即可安装 MaTex</li>
+<li>执行 <code>&lt;&lt;MaTeX`</code> 加载 MaTex（别丢了最后的反引号）</li>
+<li>输入 <code>MaTeX[&quot;x^2&quot;]</code> 看看是不是已经能够使用了</li>
+</ol>
+<h4 id="XeLaTex-中文支持"><a href="#XeLaTex-中文支持" class="headerlink" title="XeLaTex 中文支持"></a>XeLaTex 中文支持</h4><p>MaTex 默认使用 PDFLaTex 渲染，但 Mac OS 上使用 XeLatex 会比 PDFLaTex 更方便：一来可以直接调用系统字体，二来原生 Unicode 支持不要太香。</p>
+<p>一行命令将 PDFLaTex 换为 XeLatex：</p>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">ConfigureMaTeX</span><span class="punctuation">[</span><span class="string">&quot;pdfLaTeX&quot;</span> <span class="operator">-&gt;</span> <span class="string">&quot;/Library/TeX/texbin/xelatex&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>下面添加常用中文宏包：</p>
+<figure class="highlight mma"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SetOptions</span><span class="punctuation">[</span></span><br><span class="line">    <span class="variable">MaTeX</span><span class="operator">,</span> <span class="string">&quot;BasePreamble&quot;</span> <span class="operator">-&gt;</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="string">&quot;\\usepackage&#123;lmodern,exscale&#125;&quot;</span><span class="operator">,</span> </span><br><span class="line">        <span class="string">&quot;\\usepackage&#123;amsmath,amssymb&#125;&quot;</span><span class="operator">,</span> </span><br><span class="line">        <span class="string">&quot;\\usepackage&#123;xeCJK&#125;&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>试试执行 <code>MaTeX[&quot;Miao \\text&#123;猫猫能有什么坏心眼呢&#125;&quot;]</code>，看中文是否已经可以显示。</p>
+<h4 id="自动加载"><a href="#自动加载" class="headerlink" title="自动加载"></a>自动加载</h4><p>每次使用都要执行 <code>&lt;&lt;MaTeX`</code> 实在是有些麻烦，可以将其加入 <code>init.m</code> 中，实现打开时自动加载。修改 <code>init.m</code> 的具体方法参见 <a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/tutorial/ConfigurationFiles.html.zh?source=footer">Wolfram 系统配置文件</a>，<a target="_blank" rel="noopener" href="https://reference.wolfram.com/language/ref/file/init.m.html.zh?source=footer">init.m</a></p>
+<p>Mac OS 下做如下修改即可：</p>
+<figure class="highlight mma"><figcaption><span>./Library/Mathematica/Kernel/init.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(** User Mathematica initialization file **)</span></span><br><span class="line"><span class="operator">&lt;&lt;</span><span class="variable">MaTeX</span><span class="operator">`</span></span><br><span class="line"><span class="variable">ConfigureMaTeX</span><span class="punctuation">[</span><span class="string">&quot;pdfLaTeX&quot;</span> <span class="operator">-&gt;</span> <span class="string">&quot;/Library/TeX/texbin/xelatex&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="built_in">SetOptions</span><span class="punctuation">[</span></span><br><span class="line">    <span class="variable">MaTeX</span><span class="operator">,</span> <span class="string">&quot;BasePreamble&quot;</span> <span class="operator">-&gt;</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="string">&quot;\\usepackage&#123;lmodern,exscale&#125;&quot;</span><span class="operator">,</span> </span><br><span class="line">        <span class="string">&quot;\\usepackage&#123;amsmath,amssymb&#125;&quot;</span><span class="operator">,</span> </span><br><span class="line">        <span class="string">&quot;\\usepackage&#123;xeCJK&#125;&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<img data-src='https://cdn.jsdelivr.net/gh/Stardusten/Pic@master/uPic/p1.svg' alt='p1' width='400px'/>
+
+
+<p>更多教程移步 <a target="_blank" rel="noopener" href="http://szhorvat.net/pelican/latex-typesetting-in-mathematica.html">开发者博客</a>，在 <a target="_blank" rel="noopener" href="https://gitter.im/MaTeX-help/Lobby">Gitter 讨论组</a> 获得帮助。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/20/java/" rel="prev" title="Java 学习笔记">
+                  <i class="fa fa-chevron-left"></i> Java 学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/01/21/latex/" rel="next" title="Latex 学习笔记">
+                  Latex 学习笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Stardust Crusader</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<!-- require MetingJS-->
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script> 
+<!--网易云-->
+<div class="aplayer" 
+    data-id="5444575757" 
+    data-server="netease" 
+    data-type="playlist" 
+    data-fixed="true" 
+    data-mini="true"
+    data-autoplay="true" 
+    data-list-folded="true"
+    data-mutex="true"
+    data-order="random" 
+    data-loop="all"
+    data-volume="0.4" 
+    data-theme="rgb(15,15,15)" 
+    date-preload="auto"
+    data-list-max-height=500px
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+    <div class="pjax">
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('.gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '019118d09f87c9992fae',
+      clientSecret: 'b4d2650f53a338ed11ed4a38d914e929da97b11e',
+      repo        : 'comments',
+      owner       : 'Stardusten',
+      admin       : ['Stardusten'],
+      id          : '16f4282093cab3e52e0c1fcd58aa296d',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render(document.querySelector('.gitalk-container'));
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>
